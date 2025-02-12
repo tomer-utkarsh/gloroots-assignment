@@ -1,25 +1,11 @@
 {
   "records": [
     {
-      "id": 1,
-      "name": "John Doe",
-      "email": "johndoe@example.com",
-      "status": "Active",
-      "updatedAt": "2025-02-10T10:00:00Z"
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith",
-      "email": "janesmith@example.com",
+      "name": "user2",
+      "email": "user2@gamil.com",
       "status": "Inactive",
-      "updatedAt": "2025-02-11T12:15:30Z"
-    },
-    {
-      "id": "0c13",
-      "name": "sdfsdfsd",
-      "email": "dcsdcsdc",
-      "status": "Active",
-      "updatedAt": "2025-02-11T09:59:48.648Z"
+      "updatedAt": "2025-02-12T07:10:36.236Z",
+      "id": "0c13"
     }
   ]
 }

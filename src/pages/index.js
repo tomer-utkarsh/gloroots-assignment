@@ -7,7 +7,7 @@ const HomePage = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Container>
+    <Container style={{marginTop: '20px'}} >
       <Button variant="contained" color="primary" onClick={() => setOpen(true)}>
         Add Record
       </Button>

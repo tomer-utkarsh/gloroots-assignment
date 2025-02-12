@@ -4,6 +4,7 @@ import {
   Table, TableHead, TableBody, TableRow, TableCell,
   TableContainer, Paper, TablePagination, Button, TextField, MenuItem, Select, FormControl, InputLabel, Checkbox, FormGroup, FormControlLabel
 } from '@mui/material';
+import RecordForm from './RecordForm';
 
 const columns = [
   { key: 'name', label: 'Name' },
@@ -21,6 +22,8 @@ const DataTable = () => {
   const [sortField, setSortField] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
   const [visibleColumns, setVisibleColumns] = useState(columns.reduce((acc, col) => ({ ...acc, [col.key]: true }), {}));
+  const [open, setOpen] = useState(false);
+  const [editingRecord, setEditingRecord] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -45,6 +48,11 @@ const DataTable = () => {
   const handleDelete = async (id) => {
     await apiService.deleteRecord(id);
     fetchData();
+  };
+
+  const handleEdit = (record) => {
+    setEditingRecord(record);
+    setOpen(true);
   };
 
   const handleSort = (field) => {
@@ -116,6 +124,7 @@ const DataTable = () => {
                   )
                 ))}
                 <TableCell>
+                  <Button color="primary" onClick={() => handleEdit(record)}>Edit</Button>
                   <Button color="secondary" onClick={() => handleDelete(record.id)}>Delete</Button>
                 </TableCell>
               </TableRow>
@@ -132,6 +141,8 @@ const DataTable = () => {
         onPageChange={(e, newPage) => setPage(newPage)}
         onRowsPerPageChange={(e) => setRowsPerPage(parseInt(e.target.value, 10))}
       />
+
+      <RecordForm open={open} onClose={() => setOpen(false)} onRefresh={fetchData} editingRecord={editingRecord} />
     </Paper>
   );
 };
